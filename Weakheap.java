@@ -44,12 +44,14 @@ public class Weakheap {
         }
     }
 
+    // Take the values in h and construct a weak-heap by merging
     private void weakHeapify(int n) {
         for (int j = n-1; j > 0; j--) {
             merge(getGrandparent(j), j);
         }
     }
 
+    // Merge the remaining subtrees after 'removing' the root
     private void mergeForest(int m) {
         int x = 1;
         this.reverse[m/2] = false;
@@ -64,6 +66,7 @@ public class Weakheap {
         }
     }
 
+    // Remove the root and 
     public void weakHeapSort(int n) {
         weakHeapify(n);
         this.h[n] = this.h[0];
@@ -72,21 +75,21 @@ public class Weakheap {
         }
     }
 
+    // Print the array h
     public void printCurrentArray() {
         System.out.println(Arrays.toString(this.h));
     }
 
     public static void main(String[] args) {
-        int[] inputArray = new int[] { 7, 82, 28, 12, 11, 56, 21, 40, 95, 67, 92, 55, 2, 8, 30, 5 };
+        // Sample input
+        int[] inputArray = new int[] {7, 82, 28, 12, 11, 56, 21, 40, 95, 67, 92, 55, 2, 8, 30, 5};
         final int n = inputArray.length;
         Weakheap heap = new Weakheap(inputArray);
-        heap.weakHeapify(n);
-        System.out.println("Heapified: ");
-        heap.printCurrentArray();
+        // heap.weakHeapify(n);
+        // System.out.println("Heapified: ");
+        // heap.printCurrentArray();
         heap.weakHeapSort(n);
-        System.out.println("\nSorted: ");
+        System.out.println("Sorted array in h[1...n]:");
         heap.printCurrentArray();
     }
-
-
 }
