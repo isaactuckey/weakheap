@@ -54,13 +54,13 @@ public class Weakheap {
         int x = 1;
         this.reverse[m/2] = false;
         if (m >= 3) {
-            while (2 * x + (this.reverse[x] ? 1 : 0) >= m) {
+            do {
                 x = 2*x + (this.reverse[x] ? 1 : 0);
-            }
-            while (x > 0) {
-                merge(m, x);
-                x = x/2;
-            }
+            } while (2*x + (this.reverse[x] ? 1 : 0) < m);
+        }
+        while (x > 0) {
+            merge(m, x);
+            x = x/2;
         }
     }
 
@@ -72,16 +72,21 @@ public class Weakheap {
         }
     }
 
-    public void printSortedArray() {
+    public void printCurrentArray() {
         System.out.println(Arrays.toString(this.h));
     }
 
     public static void main(String[] args) {
-        int[] inputArray = new int[] { 9, 3, 4, 32, 27, 7, 12, 20, 6 };
+        int[] inputArray = new int[] { 7, 82, 28, 12, 11, 56, 21, 40, 95, 67, 92, 55, 2, 8, 30, 5 };
         final int n = inputArray.length;
         Weakheap heap = new Weakheap(inputArray);
+        heap.weakHeapify(n);
+        System.out.println("Heapified: ");
+        heap.printCurrentArray();
         heap.weakHeapSort(n);
-        heap.printSortedArray();
+        System.out.println("\nSorted: ");
+        heap.printCurrentArray();
     }
+
 
 }
