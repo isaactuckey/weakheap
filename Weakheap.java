@@ -78,16 +78,17 @@ public class Weakheap {
     // Print the array h
     public void printCurrentArray() {
         System.out.println(Arrays.toString(this.h));
+        System.out.println(Arrays.toString(this.reverse));
     }
 
     public static void main(String[] args) {
         // Sample input
-        int[] inputArray = new int[] {7, 82, 28, 12, 11, 56, 21, 40, 95, 67, 92, 55, 2, 8, 30, 5};
+        int[] inputArray = new int[] {19, 14, 27, 24, 25, 11, 5};
         final int n = inputArray.length;
         Weakheap heap = new Weakheap(inputArray);
-        // heap.weakHeapify(n);
-        // System.out.println("Heapified: ");
-        // heap.printCurrentArray();
+        heap.weakHeapify(n);
+        System.out.println("Heapified: ");
+        heap.printCurrentArray();
         heap.weakHeapSort(n);
         System.out.println("Sorted array in h[1...n]:");
         heap.printCurrentArray();
